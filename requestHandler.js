@@ -1,26 +1,25 @@
 
 
 function createNewWeatherConsultant(apiKey,city){
-    console.log("Searching for city : "+city);
-
-    let request = require('request');
-    let url = `http://api.apixu.com/v1/current.json?key=${apiKey}&q=${city}`
-
-    request(url, function (err, response, body) {
-      if(err){
-        console.log('error:', error);
-      } else {
-        console.log("success conn");
-        return downloadPDF(city,body) + "";
-      }
-    });
+	    console.log("Searching for city : "+city);
+	    let request = require('request');
+	    let url = `http://api.apixu.com/v1/current.json?key=${apiKey}&q=${city}`
+	    console.log("api : "+url);
+	    request(url, function (err, response, body) {
+	      if(err){
+	        console.log('error:', error);
+	      } else {
+	        console.log("success conn");
+	        return downloadPDF(city,body) + "";
+	      }
+	    });
 }
 
 function downloadPDF (city,body){
     let weather = JSON.parse(body);
 	// Variables:
 	// City name, Region, Country, Latitude, Longitude, Local Time, Temperature in celcius and farenheit , humidity and wind speed in Km/H and MPH .
-		var city = city.replace('/','');
+		// var city = city.replace('/','');
         var PDFDocument, doc;
 		var fs = require('fs');
 		
