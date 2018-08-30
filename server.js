@@ -5,10 +5,6 @@ const app = express();
 // EXPRESS VERSION
 function startServer(route,createNewWeatherConsultant){
 
-  // app.get('/', function (req, res) {
-  //    res.send('Hello World');
-  // })
-
   app.all(`/weather/:city`, function (req, res) {
      res.send('Searching for  : '+req.params.city);
      var city = req.params.city;
