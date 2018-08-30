@@ -38,7 +38,7 @@ function createPDF (city,body){
         doc.text (`Temperature : ${weather.current.temp_f} in farenheit`).moveDown(0.5);	
         doc.text (`Humidity : ${weather.current.humidity}`).moveDown(0.5);	
         doc.text (`Wind Speed  : ${weather.current.wind_kph}  Km/H`).moveDown(0.5);	
-        doc.text (`Wind Speed  : ${weather.current.wind_mph} MPH`).moveDown(0.5);	
+        doc.text (`Wind Speed  : ${weather.current.wind_mph} MPH`).moveDown(0.5);
 		doc.pipe(fs.createWriteStream('weather_'+city+'.pdf'));
 
 		console.log('Creado weather_'+city+'.pdf en directorio / del proyecto...');

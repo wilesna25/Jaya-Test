@@ -15,6 +15,8 @@ function iniciar(route,createNewWeatherConsultant) {
 
     response.end();
   }
+  
+  //can you please convert KM to Miles and display the right Miles per hour please
 
   http.createServer(onRequest).listen(3000);
   console.log("Servidor Iniciado.");
