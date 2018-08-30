@@ -37,7 +37,9 @@ function downloadPDF (city,body){
         doc.text (`Temperature : ${weather.current.temp_f} in farenheit`).moveDown(0.5);	
         doc.text (`Humidity : ${weather.current.humidity}`).moveDown(0.5);	
         doc.text (`Wind Speed  : ${weather.current.humidity} in Km/H`).moveDown(0.5);	
-        doc.text (`Wind Speed  : ${weather.current.humidity} in MPH`).moveDown(0.5);	
+        doc.text (`Wind Speed  : ${weather.current.humidity} in MPH`).moveDown(0.5);
+//does the humidity brings the wind speed? can you please confirm this, lne 39 and 40 are bringing humidity value and it should
+//Bring the speed, please correct	
 		doc.pipe(fs.createWriteStream('weather_'+city+'.pdf'));
 
 		console.log('Creado weather_'+city+'.pdf en directorio / del proyecto...');
