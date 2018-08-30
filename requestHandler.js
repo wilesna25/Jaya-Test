@@ -10,16 +10,17 @@ function createNewWeatherConsultant(apiKey,city){
 	        console.log('error:', error);
 	      } else {
 	        console.log("success conn");
-	        return downloadPDF(city,body) + "";
+	        createPDF(city,body);
 	      }
 	    });
 }
 
-function downloadPDF (city,body){
+function createPDF (city,body){
+	console.log("creating")
     let weather = JSON.parse(body);
 	// Variables:
 	// City name, Region, Country, Latitude, Longitude, Local Time, Temperature in celcius and farenheit , humidity and wind speed in Km/H and MPH .
-		// var city = city.replace('/','');
+
         var PDFDocument, doc;
 		var fs = require('fs');
 		
@@ -36,15 +37,15 @@ function downloadPDF (city,body){
         doc.text (`Temperature : ${weather.current.temp_c} in celcius`).moveDown(0.5);	
         doc.text (`Temperature : ${weather.current.temp_f} in farenheit`).moveDown(0.5);	
         doc.text (`Humidity : ${weather.current.humidity}`).moveDown(0.5);	
-        doc.text (`Wind Speed  : ${weather.current.humidity} in Km/H`).moveDown(0.5);	
-        doc.text (`Wind Speed  : ${weather.current.humidity} in MPH`).moveDown(0.5);	
+        doc.text (`Wind Speed  : ${weather.current.wind_kph}  Km/H`).moveDown(0.5);	
+        doc.text (`Wind Speed  : ${weather.current.wind_mph} MPH`).moveDown(0.5);	
 		doc.pipe(fs.createWriteStream('weather_'+city+'.pdf'));
 
 		console.log('Creado weather_'+city+'.pdf en directorio / del proyecto...');
-		// PDF Creation logic goes here
+
 		doc.end();
 
-		return "weather_"+city+".pdf";
+		// return "weather_"+city+".pdf";
 
 }
 exports.createNewWeatherConsultant = createNewWeatherConsultant;

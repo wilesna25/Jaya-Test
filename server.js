@@ -3,11 +3,8 @@ var url = require("url");
 
 function iniciar(route,createNewWeatherConsultant) {
   function onRequest(request, response) {
-    // var city = url.parse(request.url).pathname;
 
-
-     var city = (url.parse(request.url).pathname+"").split("/weather/")[1];
-   
+    var city = (url.parse(request.url).pathname+"").split("/weather/")[1];
 
     response.writeHead(200, {"Content-Type": "text/html"});
     response.write("Resultados por consola ... :) ");
